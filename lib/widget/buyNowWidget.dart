@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:razorpay_flutter/razorpay_flutter.dart';
 
 class BuyNowWidget extends StatefulWidget {
@@ -111,10 +112,13 @@ class _BuyNowWidgetState extends State<BuyNowWidget> {
                 decoration: BoxDecoration(
                     color: widget.product.color,
                     borderRadius: const BorderRadius.all(Radius.circular(10))),
-                child: const Center(
+                child: Center(
                   child: Text("Buy Now",
-                    style: TextStyle(
-                        fontSize: 17, fontWeight: FontWeight.bold, color: Colors.white),
+                    style: GoogleFonts.openSans(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 17,
+                    ),
                   ),
                 ),
               ),

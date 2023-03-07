@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:online_shop_app/common/products.dart';
 import 'package:online_shop_app/widget/buyNowWidget.dart';
 import 'package:online_shop_app/widget/counterWithFavButton.dart';
@@ -35,92 +36,71 @@ class DetailsPage extends StatelessWidget {
           ),
         ],
       ),
-      body: SingleChildScrollView(
-        child: Column(
+      body: SizedBox(
+        height: size.height,
+        child: Stack(
           children: [
-            SizedBox(
-              height: size.height,
-              child: Stack(
+            Container(
+              decoration: const BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(24),
+                      topRight: Radius.circular(24))),
+              margin: EdgeInsets.only(top: size.height * 0.3),
+              padding: EdgeInsets.only(top: size.height * 0.12),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: ListView(
                 children: [
-                  Container(
-                    decoration: const BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(24),
-                            topRight: Radius.circular(24))),
-                    margin: EdgeInsets.only(top: size.height * 0.3),
-                    padding: EdgeInsets.only(top: size.height * 0.12),
+                  Text(
+                    "Explore",
+                    style: GoogleFonts.openSans(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 15,
+                    ),
+                  ),
+                  const SizedBox(height: 5),
+                  Text(item == "handbag" ? product.title : item == "footwear" ? product.footwearName : product.dressName,
+                    style: GoogleFonts.openSans(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 30,
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                  RichText(
+                    text: TextSpan(children: [
+                      TextSpan(
+                        text: "Price: \u{20B9}",
+                        style: GoogleFonts.openSans(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 17,
+                        ),
+                      ),
+                      TextSpan(
+                        text: item == "handbag" ? product.price : item == "footwear" ? product.footwearPrice : product.dressPrice,
+                        style: GoogleFonts.openSans(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 17,
+                        ),
+                      ),
+                    ]),
                   ),
                   Padding(
                     padding: const EdgeInsets.all(10.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "Aristocratic Hand Bag",
-                          style: Theme.of(context)
-                              .textTheme
-                              .headline4
-                              ?.copyWith(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 15),
-                        ),
-                        const SizedBox(height: 5),
-                        Text(item == "handbag" ? product.title : item == "footwear" ? product.footwearName : product.dressName,
-                          style: Theme.of(context)
-                              .textTheme
-                              .headline4
-                              ?.copyWith(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 30),
-                        ),
-                        const SizedBox(height: 20),
-                        Padding(
-                          padding: const EdgeInsets.all(10.0),
-                          child: Row(
-                            children: [
-                              RichText(
-                                text: TextSpan(children: [
-                                  TextSpan(
-                                    text: "Price\n",
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .headline4
-                                        ?.copyWith(
-                                            color: Colors.white,
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.bold),
-                                  ),
-                                  TextSpan(
-                                    text: "\$${product.price}",
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .headline4
-                                        ?.copyWith(
-                                            color: Colors.white,
-                                            fontWeight: FontWeight.bold),
-                                  ),
-                                ]),
-                              ),
-                              const SizedBox(width: 20),
-                              Expanded(
-                                child: Image.asset(item == "handbag" ? product.image : item == "footwear" ? product.footwearImage : product.dressImage,
-                                    fit: BoxFit.cover),
-                              ),
-                            ],
-                          ),
-                        ),
-                        DescriptionSection(),
-                        const SizedBox(height: 25),
-                        const CounterWithFavButton(),
-                      ],
-                    ),
+                    child: Image.asset(item == "handbag" ? product.image : item == "footwear" ? product.footwearImage : product.dressImage,
+                        fit: BoxFit.cover),
                   ),
+                  DescriptionSection(),
+                  const CounterWithFavButton(),
                 ],
               ),
             ),
+
           ],
         ),
       ),
@@ -139,12 +119,15 @@ class DetailsPage extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Padding(
-                      padding: EdgeInsets.only(left: 10.0, right: 10.0),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 10.0, right: 10.0),
                       child: Text(
                         "Color",
-                        style: TextStyle(
-                            fontSize: 15, fontWeight: FontWeight.bold),
+                        style: GoogleFonts.openSans(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 15,
+                        ),
                       ),
                     ),
                     Row(
@@ -196,15 +179,23 @@ class DetailsPage extends StatelessWidget {
               Expanded(
                 child: RichText(
                   text: TextSpan(
-                      style: const TextStyle(color: Colors.black),
+                      style: TextStyle(color: Colors.black),
                       children: [
-                        const TextSpan(
+                        TextSpan(
                           text: "Size\n",
+                          style: GoogleFonts.openSans(
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 15,
+                          ),
                         ),
                         TextSpan(
                           text: "${product.size} cm",
-                          style: const TextStyle(
-                              fontSize: 15, fontWeight: FontWeight.bold),
+                          style: GoogleFonts.openSans(
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 15,
+                          ),
                         ),
                       ]
                   ),
@@ -215,8 +206,11 @@ class DetailsPage extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 8.0),
             child: Text(
-              product.description,
-              style: const TextStyle(height: 1.5),
+              item == "handbag" ? product.description : item == "footwear" ? product.footwearDescription : product.dressDescription,
+              style: GoogleFonts.openSans(
+                color: Colors.black,
+                fontSize: 15,
+              ),
             ),
           ),
         ],

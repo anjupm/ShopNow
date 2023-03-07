@@ -40,7 +40,7 @@ class _DressTabState extends State<DressTab> {
                 margin: const EdgeInsets.only(bottom: 10, top: 10),
                 clipBehavior: Clip.hardEdge,
                 decoration: Ui.getBoxDecoration(color: Colors.grey),
-                child: Image.asset(i.image)
+                child: Image.asset(i.dressImage)
             ),
           );
         });

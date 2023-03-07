@@ -29,61 +29,58 @@ class _FootwearTabState extends State<FootwearTab> {
           childAspectRatio: MediaQuery.of(context).size.width / (MediaQuery.of(context).size.height / 1.6),
       ),
       itemBuilder: (BuildContext context, int index) {
-        return Stack(
-          children: [
-            GestureDetector(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => DetailsPage(product: products[index], item: "footwear"),
-                  ),
-                );
-              },
-              child: Container(
-                width: double.infinity,
-                decoration: Ui.getBoxDecoration(color: Colors.white),
-                child: Column(
-                  children: [
-                    Container(
-                      height: 90,
-                      margin: const EdgeInsets.all(10.0),
-                      child: Image.asset(
-                        products[index].footwearImage,
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                    Align(
-                      alignment: Alignment.centerLeft,
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 10.0, right: 10.0, bottom: 2.0),
-                        child: Text(
-                          products[index].footwearName,
-                          style: GoogleFonts.openSans(
-                            color: Colors.grey,
-                            fontSize: 15,
-                          ),
-                        ),
-                      ),
-                    ),
-                    Align(
-                      alignment: Alignment.centerLeft,
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 10.0, right: 10.0, bottom: 5.0),
-                        child: Text(
-                          products[index].price,
-                          style: GoogleFonts.openSans(
-                            color: Colors.black,
-                            fontSize: 13,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
+        return Container(
+          width: double.infinity,
+          decoration: Ui.getBoxDecoration(color: Colors.white),
+          child: GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => DetailsPage(product: products[index], item: "footwear"),
                 ),
-              ),
+              );
+            },
+            child: Stack(
+              children: [
+                Container(
+                  height: 90,
+                  margin: const EdgeInsets.all(10.0),
+                  child: Center(
+                    child: Image.asset(
+                      products[index].footwearImage,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+                Align(
+                  alignment: Alignment.bottomLeft,
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 10.0, right: 10.0, bottom: 2.0),
+                    child: Text(
+                      products[index].footwearName,
+                      style: GoogleFonts.openSans(
+                        color: Colors.grey,
+                        fontSize: 13,
+                      ),
+                    ),
+                  ),
+                ),
+                Align(
+                  alignment: Alignment.bottomLeft,
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 10.0, right: 10.0, bottom: 20.0),
+                    child: Text("\u{20B9}${products[index].footwearPrice}",
+                      style: GoogleFonts.openSans(
+                        color: Colors.black,
+                        fontSize: 11,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             ),
-          ],
+          ),
         );
       },
     );

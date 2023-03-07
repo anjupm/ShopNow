@@ -39,7 +39,7 @@ class _HandBagTabState extends State<HandBagTab> {
             color: products[index].color,
             image: products[index].image,
             name: products[index].title,
-            price: products[index].price,
+            price: "\u{20B9}${products[index].price}",
           ),
         );
       },
