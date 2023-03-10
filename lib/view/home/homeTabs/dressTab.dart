@@ -37,7 +37,7 @@ class _DressTabState extends State<DressTab> {
             child: Container(
                 height: 450,
                 width: 450,
-                margin: const EdgeInsets.only(bottom: 10, top: 10),
+                margin: const EdgeInsets.only(bottom: 15, top: 10),
                 clipBehavior: Clip.hardEdge,
                 decoration: Ui.getBoxDecoration(color: Colors.grey),
                 child: Image.asset(i.dressImage)

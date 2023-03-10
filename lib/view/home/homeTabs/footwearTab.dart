@@ -18,7 +18,7 @@ class _FootwearTabState extends State<FootwearTab> {
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
-      itemCount: products.length,
+      itemCount: products.length - 3,
       shrinkWrap: true,
       padding: const EdgeInsets.all(10.0),
       physics: const BouncingScrollPhysics(),

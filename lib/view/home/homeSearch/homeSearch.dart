@@ -86,7 +86,7 @@ class _HomeSearchState extends State<HomeSearch> {
               : GridView.builder(
                   shrinkWrap: true,
                   itemCount: searchController!.text.isEmpty
-                      ? products.length
+                      ? products.length - 1
                       : searchProducts.length,
                   padding: const EdgeInsets.all(10.0),
                   physics: const BouncingScrollPhysics(),
@@ -104,23 +104,25 @@ class _HomeSearchState extends State<HomeSearch> {
                           context,
                           MaterialPageRoute(
                             builder: (context) =>
-                                DetailsPage(product: products[index], item: "handbag"),
+                                DetailsPage(product: searchController!.text.isEmpty
+                                    ? products[index]
+                                    : searchProducts[index], item: "handbag"),
                           ),
                         );
                       },
                       child: GridItems(
                         color: searchController!.text.isEmpty
                             ? products[index].color
-                            : products[index].color,
+                            : searchProducts[index].color,
                         image: searchController!.text.isEmpty
                             ? products[index].image
-                            : products[index].image,
+                            : searchProducts[index].image,
                         name: searchController!.text.isEmpty
                             ? products[index].title
-                            : products[index].title,
+                            : searchProducts[index].title,
                         price: searchController!.text.isEmpty
                             ? products[index].price
-                            : products[index].price,
+                            : searchProducts[index].price,
                       ),
                     );
                   },

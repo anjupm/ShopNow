@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:online_shop_app/common/ui/Ui.dart';
+import 'package:online_shop_app/view/login/loginPage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -13,7 +14,7 @@ class ProfilePage extends StatefulWidget {
 class _ProfilePageState extends State<ProfilePage> {
   late SharedPreferences loginData;
   late bool newUser;
-  late String name, email, phone, address;
+  String? name, email, phone, address;
 
   @override
   void initState() {
@@ -67,19 +68,22 @@ class _ProfilePageState extends State<ProfilePage> {
                 children: [
                   UserInfo(
                     title: "Name",
-                    text: name,
+                    text: name ?? "",
                     icon: Icons.person,
                   ),
                   UserInfo(
                     title: "Email",
-                    text: email,
+                    text: email ?? "",
                     icon: Icons.description,
                   ),
                   UserInfo(
-                      title: "Address", text: address, icon: Icons.location_on),
+                      title: "Address",
+                      text: address ?? "",
+                      icon: Icons.location_on,
+                  ),
                   UserInfo(
                     title: "Phone",
-                    text: phone,
+                    text: phone ?? "",
                     icon: Icons.call,
                   ),
                   GestureDetector(
@@ -125,7 +129,15 @@ class _ProfilePageState extends State<ProfilePage> {
                                 ),
                               ),
                               TextButton(
-                                onPressed: () async {},
+                                onPressed: () async {
+                                  loginData.setBool("newUser", true);
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => const LoginPage(),
+                                    ),
+                                  );
+                                },
                                 child: Text(
                                   'Yes',
                                   style: TextStyle(color: Colors.pink.shade900),

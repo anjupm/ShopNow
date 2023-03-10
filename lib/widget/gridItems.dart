@@ -20,6 +20,9 @@ class GridItems extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         color: color,
+        boxShadow: [
+          BoxShadow(color: Colors.grey.withOpacity(0.5), blurRadius: 10, offset: const Offset(0, 5)),
+        ],
         borderRadius: BorderRadius.circular(10.0),
       ),
       child: Stack(

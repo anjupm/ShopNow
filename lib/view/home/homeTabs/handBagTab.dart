@@ -15,7 +15,7 @@ class _HandBagTabState extends State<HandBagTab> {
   Widget build(BuildContext context) {
     return GridView.builder(
       shrinkWrap: true,
-      itemCount: products.length,
+      itemCount: products.length - 1,
       padding: const EdgeInsets.all(10.0),
       physics: const BouncingScrollPhysics(),
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
